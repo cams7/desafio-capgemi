@@ -1,9 +1,8 @@
 # Desafio programação 13/07/19
-## Tempo gasto : 9 horas
+Tempo gasto : 9 horas
 
-## Foi criado uma aplicação Spring boot utilizando [Spring Initializr](https://start.spring.io)
-## Dependencias:
-## Spring Boot DevTools, Spring Data JPA, Spring Web Starter, Lombok e HyperSQL Database
+Foi criado uma aplicação **Spring boot** utilizando [Spring Initializr](https://start.spring.io)
+Dependencias utilizadas: **Spring Boot DevTools**, **Spring Data JPA**, **Spring Web Starter**, **Lombok** e **HyperSQL Database**
 ```sh
 cd $APP_DIR
 ng new banco --style=css --routing
