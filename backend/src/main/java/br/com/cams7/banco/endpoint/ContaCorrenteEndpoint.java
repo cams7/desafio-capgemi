@@ -48,6 +48,12 @@ public class ContaCorrenteEndpoint {
 		return contaCorrenteRepository.findById(id).get();
 	}
 
+	@ResponseStatus(value = OK)
+	@GetMapping(path = "/cliente/{clienteId}")
+	public ContaCorrenteEntity buscarContaPeloCliente(@PathVariable Long clienteId) {
+		return contaCorrenteRepository.findByClienteId(clienteId).get();
+	}
+
 	@ResponseStatus(value = CREATED)
 	@PostMapping
 	public ContaCorrenteEntity salvarConta(@Valid @RequestBody ContaCorrenteEntity contaCorrente) {
@@ -69,20 +75,19 @@ public class ContaCorrenteEndpoint {
 	@ResponseStatus(value = OK)
 	@PostMapping(path = "/realizar_operacao")
 	private BigDecimal realizarOperacao(@Valid @RequestBody OperacaoVO operacao) {
-		ContaCorrenteEntity conta = contaCorrenteRepository.findById(operacao.getContaId()).get();
-		BigDecimal saldoAtual = conta.getSaldo();
+		BigDecimal saldoAtual = contaCorrenteRepository.buscarSaldo(operacao.getContaId()).get();
 		switch (operacao.getTipoOperacao()) {
 		case DEPOSITO:
-			conta.setSaldo(saldoAtual.add(operacao.getValorInformado()));
+			saldoAtual = saldoAtual.add(operacao.getValorInformado());
 			break;
 		case SAQUE:
-			conta.setSaldo(saldoAtual.subtract(operacao.getValorInformado()));
+			saldoAtual = saldoAtual.subtract(operacao.getValorInformado());
 			break;
 		default:
 			break;
 		}
-		conta =  contaCorrenteRepository.save(conta);
-		return conta.getSaldo();
+		contaCorrenteRepository.atualizarSaldo(operacao.getContaId(), saldoAtual);
+		return saldoAtual;
 	}
 
 }
