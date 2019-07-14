@@ -2,6 +2,7 @@
 Tempo gasto : 9 horas
 
 Foi criado uma aplicação **Spring boot** utilizando [Spring Initializr](https://start.spring.io)
+
 Dependencias utilizadas: **Spring Boot DevTools**, **Spring Data JPA**, **Spring Web Starter**, **Lombok** e **HyperSQL Database**
 ```sh
 cd $APP_DIR
