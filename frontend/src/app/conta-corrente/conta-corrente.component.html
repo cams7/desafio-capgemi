@@ -1,0 +1,50 @@
+<form [formGroup]="contaForm" (ngSubmit)="salvar()">  
+    <fieldset formGroupName="cliente" class="border p-2" disabled>
+        <legend class="w-auto">Informações do Cliente</legend>
+        <div class="form-group">
+            <label for="nome" class="control-label">Nome do Cliente</label>
+            <input type="text" formControlName="nome" class="form-control" id="nome" name="nome" placeholder="Nome do Cliente">
+        </div>
+        <div class="form-group">
+            <label for="cpf" class="control-label">CPF do Cliente</label>
+            <input type="text" formControlName="cpf" class="form-control" id="cpf" name="cpf" placeholder="CPF do Cliente">
+        </div>
+        <div class="form-group">
+            <label for="dataNascimento" class="control-label">Data de Nascimento do Cliente</label>
+            <input type="date" formControlName="dataNascimento" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento do Cliente">
+        </div>
+    </fieldset>
+  
+    <fieldset class="border p-2">
+        <legend class="w-auto">Informações da Conta Corrente</legend>
+
+        <div class="form-group">
+            <label for="saldo" class="control-label">Saldo Atual</label>
+            <input type="text" formControlName="saldo" class="form-control" id="saldo" name="saldo" placeholder="Saldo Atual" readonly>
+        </div>
+        <div formGroupName="operacao">
+            <div class="form-group">
+                <label>Tipo da Operação</label>            
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipoOperacao" id="deposito" [value]="1" formControlName="tipoOperacao" [ngClass]="{ 'is-invalid': isOperacaoInvalid('tipoOperacao') }">
+                    <label class="form-check-label" for="deposito">Depósito</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipoOperacao" id="saque" [value]="2" formControlName="tipoOperacao" [ngClass]="{ 'is-invalid': isOperacaoInvalid('tipoOperacao') }">
+                    <label class="form-check-label" for="saque">Saque</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="valor" class="control-label">Valor da transação</label>
+                <input type="text" id="valor" name="valor" formControlName="valor" class="form-control" [ngClass]="{ 'is-invalid': isOperacaoInvalid('valor') }" placeholder="Valor da transação" />
+                <div *ngIf="isOperacaoInvalid('valor')" class="invalid-feedback">
+                    <div *ngIf="isOperacaoErrors('valor').required">O valor da transação é obrigatório</div>
+                    <div *ngIf="isOperacaoErrors('valor').pattern">O valor da transação é númerico com no máximo 2 casas decimais</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Realizar Operação</button>
+        </div> 
+    </fieldset>    
+</form>
