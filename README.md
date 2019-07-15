@@ -4,13 +4,23 @@ Tempo gasto : 9 horas
 Foi criado uma aplicação **Spring boot** utilizando [Spring Initializr](https://start.spring.io)
 
 Dependencias utilizadas: **Spring Boot DevTools**, **Spring Data JPA**, **Spring Web Starter**, **Lombok** e **HyperSQL Database**
+
+* Instale a JDK superior a 8.
+* Instale a ultima versão do NodeJS.
+* Instale a ultima versão do Angular. 
+* Instale a ultima versão do GIT.
+* Instale as IDEs Eclipse e VS Code.
+* Execute a aplicação lombok e informe o diretório onde o Eclipse foi instalado.
+```sh
+java -jar $LOMBOK_DIR/lombok.jar
+```
+
+Segue abaixo o historico dos comandos utilizados no desenvolvimento dessa aplicação:
 ```sh
 cd $APP_DIR
 ng new banco --style=css --routing
 ```
-```sh
-java -jar $LOMBOK_DIR/lombok.jar
-```
+
 ```sh
 cd $APP_DIR/banco/frontend
 npm install --save bootstrap
@@ -25,6 +35,7 @@ ng deploy --prod
 npm install angular-http-server -g
 angular-http-server -p 4200 --path $APP_DIR/banco/frontend/dist/banco
 ```
+
 ```sh
 cd $APP_DIR/banco/backend
 mvn package
@@ -35,3 +46,23 @@ cd $APP_DIR/banco
 git remote add origin https://github.com/cams7/desafio-capgemi.git
 git push -u origin master
 ```
+
+## Roteiro
+Para rodar a aplicação execute os comandos abaixo:
+```sh
+npm install angular-http-server -g
+
+cd $APP_DIR
+git clone https://github.com/cams7/desafio-capgemi.git --branch master
+
+cd $APP_DIR/banco/backend
+mvn package
+java -jar $APP_DIR/banco/backend/target/banco-0.0.1-SNAPSHOT.jar
+
+cd $APP_DIR/banco/frontend
+npm install
+ng deploy --prod
+angular-http-server -p 4200 --path $APP_DIR/banco/frontend/dist/banco
+```
+
+Obs.: A aplicação *backend* deve rodar na porta 8080, já a *frontend* deve ser executada na porta 4200. 
