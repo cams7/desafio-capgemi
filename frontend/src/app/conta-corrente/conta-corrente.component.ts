@@ -75,16 +75,9 @@ export class ContaCorrenteComponent implements OnInit, OnDestroy {
       tipoOperacao: this.getOperacaoField('tipoOperacao').value == 1 ? TipoOperacao.DEPOSITO : TipoOperacao.SAQUE,
       valorInformado: <number><any>((<string>this.getOperacaoField('valor').value).replace(',','.'))
     };
-    console.log(operacao);
     this.contaCorrenteService.realizarOperacao(operacao).subscribe(saldoAtualizado => {
       this.contaForm.get("saldo").setValue(saldoAtualizado);
     });
-  }
-
-  get formInvalid() {
-    const invalid = this._submitted && this.contaForm.invalid;
-    console.log('Form is invalid: ', invalid);
-    return invalid;
   }
 
   isOperacaoInvalid(fieldName: string) {
