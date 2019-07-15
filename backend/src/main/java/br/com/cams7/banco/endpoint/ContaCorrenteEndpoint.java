@@ -74,7 +74,7 @@ public class ContaCorrenteEndpoint {
 
 	@ResponseStatus(value = OK)
 	@PostMapping(path = "/realizar_operacao")
-	private BigDecimal realizarOperacao(@Valid @RequestBody OperacaoVO operacao) {
+	public BigDecimal realizarOperacao(@Valid @RequestBody OperacaoVO operacao) {
 		BigDecimal saldoAtual = contaCorrenteRepository.buscarSaldo(operacao.getContaId()).get();
 		switch (operacao.getTipoOperacao()) {
 		case DEPOSITO:
