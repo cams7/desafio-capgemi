@@ -5,12 +5,14 @@ Foi criado uma aplicação **Spring boot** utilizando [Spring Initializr](https:
 
 Dependencias utilizadas: **Spring Boot DevTools**, **Spring Data JPA**, **Spring Web Starter**, **Lombok** e **HyperSQL Database**
 
+Execute as operações abaixo, caso não tenha realizado essa operação anteriormente:
 * Instale a JDK superior a 8.
+* Instale a ultima versão do Maven.
 * Instale a ultima versão do NodeJS.
 * Instale a ultima versão do Angular. 
 * Instale a ultima versão do GIT.
-* Instale as IDEs Eclipse e VS Code.
-* Execute a aplicação lombok e informe o diretório onde o Eclipse foi instalado.
+* Instale as IDEs Eclipse, VS Code e GitKraken *(Obs.: Opcional)*.
+* Execute a aplicação lombok e informe o diretório onde o Eclipse foi instalado *(Obs.: Caso esteja utilizando o Eclipse)*.
 ```sh
 java -jar $LOMBOK_DIR/lombok.jar
 ```
