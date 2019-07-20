@@ -5,7 +5,7 @@ Foi criado uma aplicação **Spring boot** utilizando [Spring Initializr](https:
 
 Dependencias utilizadas: **Spring Boot DevTools**, **Spring Data JPA**, **Spring Web Starter**, **Lombok** e **HyperSQL Database**
 
-Execute as operações abaixo, caso não tenha realizado essa operação anteriormente:
+Execute as operações abaixo, caso não tenha feito isso anteriormente:
 * Instale a JDK superior a 8.
 * Instale a ultima versão do Maven.
 * Instale a ultima versão do NodeJS.
